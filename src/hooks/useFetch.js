@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
-const useFetch = (query) => {
+const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [status, setStatus] = useState('idle');
 
     useEffect(() => {
-        if (!query) return;
+        if (!url) return;
 
         const fetchData = async () => {
             setStatus('fetching');
@@ -16,7 +16,7 @@ const useFetch = (query) => {
         };
 
         fetchData();
-    }, [query]);
+    }, [url]);
 
     return { status, data };
 };
