@@ -18,7 +18,7 @@ export const useDate = () => {
 // month, day, year, hours, minutes, seconds
 
 export const useCountdown = (countDownDate = new Date("Jan 5, 2024 15:37:25").getTime()) => {
-  // Date counting down to
+  // Initialize state
   const [days, setDays] = useState(null);
   const [hours, setHours] = useState(null);
   const [minutes, setMinutes] = useState(null);
@@ -35,9 +35,7 @@ export const useCountdown = (countDownDate = new Date("Jan 5, 2024 15:37:25").ge
 
       // Time calculations for days, hours, minutes and seconds
       setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
-      setHours(
-        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      );
+      setHours(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
       setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
       setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
 
