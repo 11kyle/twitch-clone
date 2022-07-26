@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useResize } from "../hooks/useResize";
 
 export const ListItem = ({ data }) => {
-  const [size, setSize] = useState(7);
-  const [size1, setSize1] = useResize(data);
+  const [size, setSize] = useResize(data);
 
 
   function showMore() {
@@ -33,23 +32,7 @@ export const ListItem = ({ data }) => {
   return (
     <>
       {items}
-      <button onClick={setSize1}>{data.length > size1 ? "Show More" : "Show Less"}</button>
-
-      {data.length && <button className="text-violet-500 text-sm mx-2 hover:underline" 
-      onClick={showMore}>
-        {data.length > size ? "Show More" : "Show Less"}
-      </button>}
-
-    {/*
-      {data.length > size ? 
-        <button className="text-violet-500 text-sm mx-2 hover:underline" onClick={showMore}>
-          {size <= 7 ? "Show More" : "Show Less"}
-        </button> :
-        <button className="text-violet-500 text-sm mx-2 hover:underline" onClick={showMore}>
-        {size <= 7 ? "Show More" : "Show Less"}
-      </button>
-      }
-    */}
+      <button className="text-violet-500 text-sm mx-2 hover:underline" onClick={setSize}>{data.length > size ? "Show More" : "Show Less"}</button>
     </>
   );
 }

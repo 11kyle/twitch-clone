@@ -40,19 +40,16 @@ function Clock() {
   console.log(hours.toLocaleString('en-US', {minimumIntegerDigits: 2}))
 
   return (
-    <div className="flex justify-center items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-500">
+    <div className="flex justify-center items-center space-x-2 h-screen bg-gradient-to-r from-cyan-500 to-blue-500">
       {hours.toLocaleString('en-US', {minimumIntegerDigits: 2}).split("").map((value, index) => (
-        <div className="text-7xl bg-white rounded-md p-3 my-10" key={index}>{value}</div>
-      ))}
-
-      <div className="text-7xl text-white">:</div>
-      {minutes && minutes.toLocaleString('en-US', {minimumIntegerDigits: 2}).split("").map((value, index) => (
         <div className="text-7xl bg-white rounded-md p-3" key={index}>{value}</div>
       ))}
 
       <div className="text-7xl text-white">:</div>
-      {/* needs a unique key. currently numbers like 55 have the same key */}
-      {/* 00 causes the render to disappear */}
+      {minutes.toLocaleString('en-US', {minimumIntegerDigits: 2}).split("").map((value, index) => (
+        <div className="text-7xl bg-white rounded-md p-3" key={index}>{value}</div>
+      ))}
+      <div className="text-7xl text-white">:</div>
       {seconds.toLocaleString('en-US', {minimumIntegerDigits: 2}).split("").map((value, index) => (
         <div className="text-7xl bg-white rounded-md p-3" key={index}>{value}</div>
       ))}
