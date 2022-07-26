@@ -9,7 +9,6 @@ export const useDate = () => {
         return function cleanup() {
             clearInterval(timer);
         }
-        
     });
 
     return [date];
@@ -17,12 +16,12 @@ export const useDate = () => {
 
 // month, day, year, hours, minutes, seconds
 
-export const useCountdown = (countDownDate = new Date("Jan 5, 2024 15:37:25").getTime()) => {
+export const useCountdown = (targetDate = new Date("Jan 5, 2024 15:37:25").getTime()) => {
   // Initialize state
-  const [days, setDays] = useState(null);
-  const [hours, setHours] = useState(null);
-  const [minutes, setMinutes] = useState(null);
-  const [seconds, setSeconds] = useState(null);
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     // Update the count down every 1 second
@@ -31,7 +30,7 @@ export const useCountdown = (countDownDate = new Date("Jan 5, 2024 15:37:25").ge
       const now = new Date().getTime();
 
       // Find the distance between
-      const distance = countDownDate - now;
+      const distance = targetDate - now;
 
       // Time calculations for days, hours, minutes and seconds
       setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));

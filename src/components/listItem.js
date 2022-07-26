@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { useResize } from "../hooks/useResize";
 
 export const ListItem = ({ data }) => {
   const [size, setSize] = useState(7);
+  const [size1, setSize1] = useResize(data);
+
 
   function showMore() {
-    setSize(prevSize => prevSize + 7); 
+    if (data.length > size) return setSize(prevSize => prevSize + 7);
+
+    return setSize(prevSize => prevSize -7);
   }
 
   const items = data.slice(0, size).map(({name, game, viewers}) => {
@@ -28,9 +33,13 @@ export const ListItem = ({ data }) => {
   return (
     <>
       {items}
-      {data.length > size && <button className="text-violet-500 text-sm mx-2 hover:underline" onClick={showMore}>
-        {size <= 7 ? "Show More" : "Show Less"}
+      <button onClick={setSize1}>{data.length > size1 ? "Show More" : "Show Less"}</button>
+
+      {data.length && <button className="text-violet-500 text-sm mx-2 hover:underline" 
+      onClick={showMore}>
+        {data.length > size ? "Show More" : "Show Less"}
       </button>}
+
     {/*
       {data.length > size ? 
         <button className="text-violet-500 text-sm mx-2 hover:underline" onClick={showMore}>

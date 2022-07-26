@@ -7,7 +7,7 @@ export const SideNav = ({ title, content, content2 }) => {
       <h1 className="font-medium text-white m-1">{title}</h1>
       {content}
       <h1 className="font-medium text-white m-1">RECOMMENDED CHANNELS</h1>
-      {content2}
+      {/*{content2}*/}
     </SimpleBar>
   );
 };
